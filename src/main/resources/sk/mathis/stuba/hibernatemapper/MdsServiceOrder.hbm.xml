@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsServiceOrder" table="mds_service_order" catalog="mobiledeviceservice">
+        <id name="idServiceOrder" type="java.lang.Integer">
+            <column name="id_service_order" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsServiceClaimant" class="sk.mathis.stuba.hibernatemapper.MdsServiceClaimant" fetch="select">
+            <column name="id_claimant" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mdsDevice" class="sk.mathis.stuba.hibernatemapper.MdsDevice" fetch="select">
+            <column name="id_device" not-null="true" />
+        </many-to-one>
+        <property name="registrationDate" type="timestamp">
+            <column name="registration_date" length="19" not-null="false" />
+        </property>
+        <property name="faultDescription" type="string">
+            <column name="fault_description" length="65535" not-null="true" />
+        </property>
+        <property name="deviceSent" type="boolean">
+            <column name="device_sent" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

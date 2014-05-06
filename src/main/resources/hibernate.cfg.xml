@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mobiledeviceservice?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsRepair.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsSentDevices.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsDeviceVendor.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsDiagnosis.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsDeviceModel.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsTest.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsServiceOrder.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsInvoice.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsDevice.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsTesting.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsDiagnostician.hbm.xml"/>
+    <mapping resource="sk/mathis/stuba/hibernatemapper/MdsServiceClaimant.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

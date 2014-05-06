@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsRepair" table="mds_repair" catalog="mobiledeviceservice">
+        <id name="idRepair" type="java.lang.Integer">
+            <column name="id_repair" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsDiagnosis" class="sk.mathis.stuba.hibernatemapper.MdsDiagnosis" fetch="select">
+            <column name="id_diagnosis" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mdsDiagnostician" class="sk.mathis.stuba.hibernatemapper.MdsDiagnostician" fetch="select">
+            <column name="id_diagnostician" not-null="true" />
+        </many-to-one>
+        <property name="startTime" type="timestamp">
+            <column name="start_time" length="19" not-null="true" />
+        </property>
+        <property name="endTime" type="timestamp">
+            <column name="end_time" length="19" />
+        </property>
+        <property name="report" type="string">
+            <column name="report" />
+        </property>
+        <property name="repairCosts" type="double">
+            <column name="repair_costs" precision="8" not-null="true" />
+        </property>
+        <set name="mdsSentDeviceses" table="mds_sent_devices" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_repair" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsSentDevices" />
+        </set>
+        <set name="mdsInvoices" table="mds_invoice" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_repair" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsInvoice" />
+        </set>
+    </class>
+</hibernate-mapping>

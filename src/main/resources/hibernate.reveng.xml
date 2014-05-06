@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="mobiledeviceservice"/>
+  <table-filter match-name="mds_sent_devices"/>
+  <table-filter match-name="mds_device_vendor"/>
+  <table-filter match-name="mds_service_order"/>
+  <table-filter match-name="mds_invoice"/>
+  <table-filter match-name="mds_service_claimant"/>
+  <table-filter match-name="mds_diagnostician"/>
+  <table-filter match-name="mds_testing"/>
+  <table-filter match-name="mds_device_model"/>
+  <table-filter match-name="mds_diagnosis"/>
+  <table-filter match-name="mds_device"/>
+  <table-filter match-name="mds_test"/>
+  <table-filter match-name="mds_repair"/>
+</hibernate-reverse-engineering>

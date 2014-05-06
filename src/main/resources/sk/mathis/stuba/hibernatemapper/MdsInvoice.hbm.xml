@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsInvoice" table="mds_invoice" catalog="mobiledeviceservice">
+        <id name="idInvoice" type="java.lang.Integer">
+            <column name="id_invoice" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsRepair" class="sk.mathis.stuba.hibernatemapper.MdsRepair" fetch="select">
+            <column name="id_repair" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mdsDiagnostician" class="sk.mathis.stuba.hibernatemapper.MdsDiagnostician" fetch="select">
+            <column name="id_diagnostician" not-null="true" />
+        </many-to-one>
+        <property name="price" type="double">
+            <column name="price" precision="8" not-null="true" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" not-null="true" />
+        </property>
+        <property name="paid" type="boolean">
+            <column name="paid" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

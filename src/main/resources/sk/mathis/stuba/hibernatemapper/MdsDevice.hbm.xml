@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsDevice" table="mds_device" catalog="mobiledeviceservice">
+        <id name="idDevice" type="java.lang.Integer">
+            <column name="id_device" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsDeviceModel" class="sk.mathis.stuba.hibernatemapper.MdsDeviceModel" fetch="select">
+            <column name="id_device_model" not-null="true" />
+        </many-to-one>
+        <property name="imei" type="string">
+            <column name="imei" length="16777215" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="7" not-null="true" />
+        </property>
+        <property name="tested" type="boolean">
+            <column name="tested" not-null="true" />
+        </property>
+        <property name="repaired" type="boolean">
+            <column name="repaired" not-null="true" />
+        </property>
+        <set name="mdsDiagnosises" table="mds_diagnosis" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_device" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsDiagnosis" />
+        </set>
+        <set name="mdsTestings" table="mds_testing" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_device" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsTesting" />
+        </set>
+        <set name="mdsServiceOrders" table="mds_service_order" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_device" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsServiceOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

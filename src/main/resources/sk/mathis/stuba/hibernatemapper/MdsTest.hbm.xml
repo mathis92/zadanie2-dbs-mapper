@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsTest" table="mds_test" catalog="mobiledeviceservice">
+        <id name="idTest" type="java.lang.Integer">
+            <column name="id_test" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsTesting" class="sk.mathis.stuba.hibernatemapper.MdsTesting" fetch="select">
+            <column name="id_testing" not-null="true" />
+        </many-to-one>
+        <property name="type" type="string">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="foundFault" type="string">
+            <column name="found_fault" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

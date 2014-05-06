@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsDeviceModel" table="mds_device_model" catalog="mobiledeviceservice">
+        <id name="idDeviceModel" type="java.lang.Integer">
+            <column name="id_device_model" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mdsDeviceVendor" class="sk.mathis.stuba.hibernatemapper.MdsDeviceVendor" fetch="select">
+            <column name="id_device_vendor" not-null="true" />
+        </many-to-one>
+        <property name="model" type="string">
+            <column name="model" length="45" not-null="true" />
+        </property>
+        <set name="mdsDevices" table="mds_device" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_device_model" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsDevice" />
+        </set>
+    </class>
+</hibernate-mapping>

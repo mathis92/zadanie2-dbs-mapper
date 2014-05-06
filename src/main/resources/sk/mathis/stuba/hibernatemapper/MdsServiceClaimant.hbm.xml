@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 29, 2014 5:20:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="sk.mathis.stuba.hibernatemapper.MdsServiceClaimant" table="mds_service_claimant" catalog="mobiledeviceservice">
+        <id name="idServiceClaimant" type="java.lang.Integer">
+            <column name="id_service_claimant" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="adress" type="string">
+            <column name="adress" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="45" not-null="true" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="phone_number" length="16777215" not-null="true" />
+        </property>
+        <property name="legalType" type="string">
+            <column name="legal_type" length="10" not-null="true" />
+        </property>
+        <set name="mdsServiceOrders" table="mds_service_order" inverse="true" lazy="true" fetch="select" cascade="all-delete-orphan">
+            <key>
+                <column name="id_claimant" not-null="true" />
+            </key>
+            <one-to-many class="sk.mathis.stuba.hibernatemapper.MdsServiceOrder" />
+        </set>
+    </class>
+</hibernate-mapping>
